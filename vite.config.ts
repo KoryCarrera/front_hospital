@@ -7,5 +7,12 @@ export default defineConfig({
   server: {
     port: 4000,
     strictPort: true,
-  }
+    host: true,
+    hmr: {
+      clientPort: 4000,
+    },
+    watch: {
+      usePolling: true
+    },
+  },
 })
