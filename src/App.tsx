@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Home } from './pages/Home'; // Cambiado a Mayúscula
-import { Login } from './pages/Login'; // Importa tu login
+import { Home } from './pages/Home'; 
+import { Login } from './pages/Login';
+import { Register } from './pages/Register'; 
 
 // Este es tu "Middleware" de front
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
@@ -21,6 +22,7 @@ function App() {
       {/* Rutas Públicas */}
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       {/* Rutas Protegidas */}
       <Route
