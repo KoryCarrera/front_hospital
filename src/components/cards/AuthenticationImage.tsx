@@ -14,7 +14,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { loginSchema } from '../../schemas/userSchema';
 import type { LoginInput } from '../../schemas/userSchema';
-import axios from 'axios';
+import { api } from '../../api/axiosconfig';
 import { useNavigate } from 'react-router-dom';
 import { IconAlertCircle } from '@tabler/icons-react';
 
@@ -32,13 +32,13 @@ export function AuthenticationImage() {
 
   const mutation = useMutation({
     mutationFn: async (data: LoginInput) => {
-      const response = await axios.post('http://localhost:3000/api/v1/auth/login', data);
+      const response = await api.post('/auth/login', data);
       return response;
     },
     onSuccess: (res: any) => {
       localStorage.setItem('userInfo', JSON.stringify(res.data.data.user));
       console.log(`Login valido, bienvenido: ${res.data.data.user.username}`);
-      navigate('/')
+      navigate('/dashboard')
     },
     onError: (error: any) => {
       console.error(`Ha ocurrido un error a la hora de loguearse ${error.response?.data?.message}`)
