@@ -15,7 +15,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { registerSchema } from '../../schemas/userSchema';
 import type { RegisterInput } from '../../schemas/userSchema';
-import axios from 'axios';
+import { api } from '../../api/axiosconfig';
 import { useNavigate } from 'react-router-dom';
 import { IconAlertCircle } from '@tabler/icons-react';
 
@@ -33,7 +33,7 @@ export function AuthenticationTitle() {
 
   const mutation = useMutation({
     mutationFn: async (payload: RegisterInput & { fecha_registro: any }) => {
-      const response = await axios.post('http://localhost:3000/api/v1/auth/register', payload);
+      const response = await api.post('/auth/register', payload);
       return response;
     },
     onSuccess: (res: any) => {
@@ -42,7 +42,7 @@ export function AuthenticationTitle() {
       
     },
     onError: (err: any) => {
-      console.error(`Ha ocurrido un error a la hora de registrar usuario ${err}`);
+      console.error(`Ha ocurrido un error a la hora de registrar usuario ${err.response.data}`);
     }
   });
 

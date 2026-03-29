@@ -1,5 +1,5 @@
 import { HeaderMegaMenu } from '../components/layouts/HeaderMegaMenu'
-import { HeroTitle } from '../components/layouts/HeroTitle';
+import { HeroTitle } from '../components/sections/HeroTitle';
 import { FooterSocial } from '../components/layouts/FooterSocial'
 
 export const Home = () => {
